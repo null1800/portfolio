@@ -17,7 +17,7 @@ export default function ContactForm() {
       await sendMessage(form);
       setStatus("✅ Message sent successfully!");
       setForm({ name: "", email: "", message: "" });
-    } catch (error) {
+    } catch {
       setStatus("❌ Failed to send message.");
     }
   };

@@ -7,13 +7,6 @@ import PageTransition from "@/components/ui/PageTransition";
 import StairTransition from "@/components/ui/StairTransition";
 import Providers from "@/components/providers/providers";
 
-const geistSans = GeistSans({
-  variable: "--font-geist-sans",
-});
-
-const geistMono = GeistMono({
-  variable: "--font-geist-mono",
-});
 
 export const metadata: Metadata = {
   title: "My Portfolio",
@@ -29,8 +22,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`
-          ${geistSans.variable}
-          ${geistMono.variable}
+          ${GeistSans.variable}
+          ${GeistMono.variable}
           antialiased 
           bg-background 
           text-foreground

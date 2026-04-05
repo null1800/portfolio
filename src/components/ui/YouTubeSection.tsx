@@ -3,7 +3,12 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import type { Video } from "@/lib/youtube";
+interface Video {
+  id: string;
+  title: string;
+  description?: string;
+  thumbnail?: string;
+}
 
 interface Props {
   videos: Video[];

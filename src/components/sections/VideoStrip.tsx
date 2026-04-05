@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function VideoStrip() {
   const videos: { id: string; title: string; description?: string }[] = [
@@ -30,10 +31,12 @@ export default function VideoStrip() {
                     onClick={() => setPlaying((s) => ({ ...s, [v.id]: true }))}
                     className="w-full h-full relative"
                   >
-                    <img
+                    <Image
                       src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
                       alt={v.title}
-                      className="object-cover w-full h-full"
+                      fill
+                      sizes="(max-width: 640px) 300px, (max-width: 1024px) 380px, 460px"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="rounded-full bg-black/50 p-3">
