@@ -10,7 +10,7 @@ import Providers from "@/components/providers/providers";
 
 export const metadata: Metadata = {
   title: "My Portfolio",
-  description: "Personal portfolio built with Next.js and Convex",
+  description: "Personal portfolio built with Next.js",
 };
 
 export default function RootLayout({

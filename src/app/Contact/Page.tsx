@@ -1,24 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { useMutation } from "convex/react";
-import { api } from "../../../convex/_generated/api";
 import { motion } from "framer-motion";
 
 export default function ContactForm() {
-  const sendMessage = useMutation(api.messages.sendMessage);
-
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await sendMessage(form);
-      setStatus("✅ Message sent successfully!");
-      setForm({ name: "", email: "", message: "" });
+      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("✅ Message sent successfully!");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("❌ Failed to send message. Please try again.");
+      }
     } catch {
-      setStatus("❌ Failed to send message.");
+      setStatus("❌ Failed to send message. Please try again.");
     }
   };
 
